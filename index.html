@@ -1,13 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>quiz</title>
 </head>
+
 <body>
-    
-    <script src="main.js"></script>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Fun Quiz</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <h6> 60 sec remaining</h6>
+            </div>
+            <div class="col-md-6 pb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Question 1 / 6</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Is the number 8 divisible by 2 ?</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <input type="checkbox" name="options" id="options"> &nbsp;
+                                <span>Cras justo odio</span>
+                            </li>
+                            <li class="list-group-item">
+                                <input type="checkbox" name="options" id="options"> &nbsp;
+                                <span>Dapibus ac facilisis in </span>
+                            </li>
+                            <li class="list-group-item">
+                                <input type="checkbox" name="options" id="options"> &nbsp;
+                                <span>Vestibulum at eros</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body d-flex justify-content-between">
+                        <a href="#" class="card-link">Prev</a>
+                        <a href="#" class="card-link">Next</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-right">
+                <h6 class="row">
+                    <div class="col-md-4 col-sm-0"></div>
+                    <div class="col-md-8 col-sm-12">
+                        <button class="btn btn-primary w-100 p-2" onclick="onClick()">View High Scores</button></h6>
+                    </div>
+                    
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="./main.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
