@@ -47,11 +47,23 @@ var options = document.getElementsByClassName('options');
 var nextEl = document.getElementById('next');
 var prevEl = document.getElementById('prev');
 var questionNumEl = document.getElementById('question-number');
-var circularCount=0;
+var countDownEl = document.getElementById('count-down');
+var initialTime = 60;
+var circularCount = 0;
+
+var countDown = setInterval(function(){
+    initialTime--;
+    countDownEl.textContent = initialTime + ' sec remaining';
+    if(initialTime === 0){
+        clearInterval(countDown);
+        //show pop up that time is over, calculate the total score and display
+    }
+},1000);
 
 assignQuestion(0);
 assignAnswers(0);
 setQuestionNum(1);
+countDownEl.textContent = initialTime + ' sec remaining';
 
 function assignQuestion(questionNum){
     qEl.textContent = listOfqa[questionNum].q;
