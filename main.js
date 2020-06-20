@@ -46,9 +46,16 @@ var qEl = document.getElementById('question');
 var options = document.getElementsByClassName('options');
 var nextEl = document.getElementById('next');
 var prevEl = document.getElementById('prev');
+var questionNumEl = document.getElementById('question-number');
+var circularCount=0;
 
-qEl.textContent = listOfqa[0].q;
+assignQuestion(0);
 assignAnswers(0);
+setQuestionNum(1);
+
+function assignQuestion(questionNum){
+    qEl.textContent = listOfqa[questionNum].q;
+}
 
 function assignAnswers(questionNum) {
     var answersArr = listOfqa[questionNum].a;
@@ -57,17 +64,37 @@ function assignAnswers(questionNum) {
     }
 }
 
+function setQuestionNum(num){
+    questionNumEl.textContent = 'Question ' +  num + '/' + listOfqa.length;
+}
+
 
 function onClick() {
     window.location.href = './score.html';
 }
 
 function onPrevClick(event){
-
+    if(circularCount===0){
+        circularCount = listOfqa.length - 1;
+    }
+    else{
+        circularCount--;
+    }
+    assignQuestion(circularCount);
+    assignAnswers(circularCount);
+    setQuestionNum(circularCount+1);
 }
 
 function onNextClick(event){
-    
+    if(circularCount === listOfqa.length-1){
+        circularCount = 0;
+    }
+    else{
+        circularCount++;
+    }
+    assignQuestion(circularCount);
+    assignAnswers(circularCount);
+    setQuestionNum(circularCount+1);
 }
 
 prevEl.addEventListener('click',onPrevClick);
