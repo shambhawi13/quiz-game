@@ -1,3 +1,14 @@
 .result-card{
     display: none;
 }
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+  }
+
+  .error-span{
+    font-size: 12px;
+    font-style: italic;
+  }

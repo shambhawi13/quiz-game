@@ -53,10 +53,10 @@ var listOfqa = [
 ];
 
 var highscores_list = [
-    {name:'sham' , score: 10},
-    {name:'John' , score: 9}
+    { name: 'sham', score: 10 },
+    { name: 'John', score: 9 }
 ];
-localStorage.setItem('highscores_list',JSON.stringify(highscores_list));
+localStorage.setItem('highscores_list', JSON.stringify(highscores_list));
 
 var qEl = document.getElementById('question');
 var options = document.getElementsByClassName('options');
@@ -90,8 +90,8 @@ function startTimer(duration, display) {
             display.textContent = 'Time Over';
             var finalScoreIs = document.getElementsByClassName('score-is')[0];
             finalScoreIs.textContent = `Your Final Score is ${score}`
-            questionCard.setAttribute('style','display:none');
-            resultCard.setAttribute('style','display:block');
+            questionCard.setAttribute('style', 'display:none');
+            resultCard.setAttribute('style', 'display:block');
         }
     }, 1000);
 }
@@ -100,7 +100,7 @@ assignQuestion(0);
 assignAnswers(0);
 setQuestionNum(1);
 
-function assignQuestion(questionNum){
+function assignQuestion(questionNum) {
     qEl.textContent = listOfqa[questionNum].q;
 }
 
@@ -111,22 +111,22 @@ function assignAnswers(questionNum) {
     }
 }
 
-function setQuestionNum(num){
-    questionNumEl.textContent = 'Question ' +  num + '/' + listOfqa.length;
+function setQuestionNum(num) {
+    questionNumEl.textContent = 'Question ' + num + '/' + listOfqa.length;
     questionNumOnScreen = num;
 }
 
-function checkAnswers(){
+function checkAnswers() {
     var optionSelected = document.querySelector('input[name="options"]:checked').value;
     console.log(optionSelected);
-    var correctOption = listOfqa[questionNumOnScreen-1].option;
-    if(optionSelected == correctOption){
+    var correctOption = listOfqa[questionNumOnScreen - 1].option;
+    if (optionSelected == correctOption) {
         score = score + 10;
     }
-    else{
+    else {
         score = score - 5;
     }
-        
+
     console.log('score: ' + score);
 }
 
@@ -135,29 +135,71 @@ function onClick() {
     window.location.href = './score.html';
 }
 
-function onPrevClick(event){
-    if(circularCount===0){
-        circularCount = listOfqa.length - 1;
+function onSaveScore() {
+    var initial = document.getElementById('initials');
+    if (initial.value) {
+        highscores_list.push({
+            name: initial.value,
+            score: score
+        })
+        localStorage.setItem('highscores_list', JSON.stringify(highscores_list));
+        setTimeout(function(){
+            window.location.href = './score.html';
+        },100);
+        
     }
-    else{
+    else {
+        var errorSpan = document.getElementsByClassName('error-span')[0];
+        if (errorSpan) {
+            return;
+        }
+        else {
+            var errorSpan = document.createElement('span');
+            initial.parentElement.parentElement.append(errorSpan);
+            errorSpan.textContent = 'Initials cannot be empty';
+            errorSpan.setAttribute('class', 'text-danger error-span');
+        }
+    }
+
+}
+
+function onPrevClick(event) {
+    //uncheck all radio buttons
+    let radio = document.querySelectorAll('input[name="options"]');
+    for (let i = 0; i < radio.length; i++) {
+        radio[i].checked = false;
+    }
+
+    if (circularCount === 0) {
+        //disable prev button
+        //prevEl.setAttribute('class','disabled');
+    }
+    else {
         circularCount--;
     }
     assignQuestion(circularCount);
     assignAnswers(circularCount);
-    setQuestionNum(circularCount+1);
+    setQuestionNum(circularCount + 1);
 }
 
-function onNextClick(event){
-    if(circularCount === listOfqa.length-1){
-        circularCount = 0;
+function onNextClick(event) {
+    //uncheck all radio buttons
+    let radio = document.querySelectorAll('input[name="options"]');
+    for (let i = 0; i < radio.length; i++) {
+        radio[i].checked = false;
     }
-    else{
+
+    if (circularCount === listOfqa.length - 1) {
+        //disable next button
+        nextEl.setAttribute('class', 'disabled');
+    }
+    else {
         circularCount++;
     }
     assignQuestion(circularCount);
     assignAnswers(circularCount);
-    setQuestionNum(circularCount+1);
+    setQuestionNum(circularCount + 1);
 }
 
-prevEl.addEventListener('click',onPrevClick);
-nextEl.addEventListener('click',onNextClick);
+prevEl.addEventListener('click', onPrevClick);
+nextEl.addEventListener('click', onNextClick);
