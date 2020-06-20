@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>quiz</title>
 </head>
 
@@ -24,10 +24,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <h6 id="count-down"> 60 sec remaining</h6>
+                <h6 id="count-down"></h6>
             </div>
             <div class="col-md-6 pb-5">
-                <div class="card">
+                <div class="card question-card">
                     <div class="card-body">
                         <h5 class="card-title" id="question-number"></h5>
                         <h6 class="card-subtitle mb-2 text-muted" id="question"></h6>
@@ -55,6 +55,19 @@
                         <a href="#" class="card-link" id="next">Next</a>
                     </div>
                 </div>
+
+                <!-- result section -->
+                <div class="card result-card">
+                    <h5 class="card-header">All done..!!</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">Your Final Score is 22</h5>
+                      <section class="d-flex justify-content-between">
+                        <input type="text" placeholder="Enter Initials" id="initials">
+                        <a href="#" class="btn btn-primary" onclick="onClick()">Submit</a>
+                      </section>
+                    </div>
+                  </div>
+
             </div>
             <div class="col-md-3 text-right">
                 <h6 class="row">

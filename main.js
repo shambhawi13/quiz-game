@@ -42,28 +42,50 @@ var listOfqa = [
     },
 ];
 
+var highscores_list = [
+    {name:'sham' , score: 10},
+    {name:'John' , score: 9}
+];
+localStorage.setItem('highscores_list',JSON.stringify(highscores_list));
+
 var qEl = document.getElementById('question');
 var options = document.getElementsByClassName('options');
 var nextEl = document.getElementById('next');
 var prevEl = document.getElementById('prev');
 var questionNumEl = document.getElementById('question-number');
 var countDownEl = document.getElementById('count-down');
-var initialTime = 60;
+var questionCard = document.getElementsByClassName('question-card')[0];
+var resultCard = document.getElementsByClassName('result-card')[0];
 var circularCount = 0;
 
-var countDown = setInterval(function(){
-    initialTime--;
-    countDownEl.textContent = initialTime + ' sec remaining';
-    if(initialTime === 0){
-        clearInterval(countDown);
-        //show pop up that time is over, calculate the total score and display
-    }
-},1000);
+var fiveMinutes = 60 * 1;
+startTimer(fiveMinutes, countDownEl);
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    var countDown = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds + ' remaining ';
+
+        if (--timer < 0) {
+            clearInterval(countDown);
+            //calculate the total score and display
+            display.textContent = 'Time Over';
+            questionCard.setAttribute('style','display:none');
+            resultCard.setAttribute('style','display:block');
+        }
+    }, 1000);
+}
 
 assignQuestion(0);
 assignAnswers(0);
 setQuestionNum(1);
-countDownEl.textContent = initialTime + ' sec remaining';
+//countDownEl.textContent = initialTime + ' sec remaining';
 
 function assignQuestion(questionNum){
     qEl.textContent = listOfqa[questionNum].q;
