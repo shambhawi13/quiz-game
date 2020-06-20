@@ -33,20 +33,20 @@
                         <h6 class="card-subtitle mb-2 text-muted" id="question"></h6>
                         <ul class="list-group list-group-flush options">
                             <li class="list-group-item">
-                                <input type="checkbox" name="options" id="options"> &nbsp;
-                                <span id="option1"></span>
+                                <input type="radio" name="options" value="1" id="radio1" onclick="checkAnswers()"> &nbsp;
+                                <label for="radio1"></label>
                             </li>
                             <li class="list-group-item">
-                                <input type="checkbox" name="options" id="options"> &nbsp;
-                                <span id="option2"></span>
+                                <input type="radio" name="options" value="2" id="radio2" onclick="checkAnswers()"> &nbsp;
+                                <label for="radio2"></label>
                             </li>
                             <li class="list-group-item">
-                                <input type="checkbox" name="options" id="options"> &nbsp;
-                                <span id="option3"></span>
+                                <input type="radio" name="options" value="3" id="radio3" onclick="checkAnswers()"> &nbsp;
+                                <label for="radio3"></label>
                             </li>
                             <li class="list-group-item">
-                                <input type="checkbox" name="options" id="options"> &nbsp;
-                                <span id="option4"></span>
+                                <input type="radio" name="options" value="4" id="radio4" onclick="checkAnswers()"> &nbsp;
+                                <label for="radio4"></label>
                             </li>
                         </ul>
                     </div>
@@ -58,9 +58,9 @@
 
                 <!-- result section -->
                 <div class="card result-card">
-                    <h5 class="card-header">All done..!!</h5>
+                    <h5 class="card-header">All done!!</h5>
                     <div class="card-body">
-                      <h5 class="card-title">Your Final Score is 22</h5>
+                      <h5 class="card-title score-is">Your Final Score is 22</h5>
                       <section class="d-flex justify-content-between">
                         <input type="text" placeholder="Enter Initials" id="initials">
                         <a href="#" class="btn btn-primary" onclick="onClick()">Submit</a>

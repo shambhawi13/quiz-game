@@ -2,43 +2,53 @@
 var listOfqa = [
     {
         q: 'What are the ways to define a variable in JavaScript?',
-        a: ['let', 'const', 'var', 'all of the above']
+        a: ['let', 'const', 'var', 'all of the above'],
+        option: 4
     },
     {
         q: 'What is the difference between the operators ‘==‘ & ‘===‘?',
-        a: ['no difference, both checks equality of value', '== check checks equality of value and === checks quality of value as well as type', '== is assignment and === is comparison operator', 'none of the above']
+        a: ['no difference, both checks equality of value', '== check checks equality of value and === checks equality of value as well as type', '== is assignment and === is comparison operator', 'none of the above'],
+        option: 2
     },
     {
         q: 'What does innerText do?',
-        a: ['It will process an HTML tag if found in a string', 'It will not process an HTML tag if found in a string', 'event listener', 'none of the above']
+        a: ['It will process an HTML tag if found in a string', 'It will not process an HTML tag if found in a string', 'event listener', 'none of the above'],
+        option: 2
     },
     {
         q: 'Does JavaScript support automatic type conversion',
-        a: ['Yes', 'No', 'Sometimes', 'Not sure']
+        a: ['Yes', 'No', 'Sometimes', 'Not sure'],
+        option: 1
     },
     {
         q: 'Choose one which is not a looping structures in JavaScript?',
-        a: ['for', 'if', 'while', 'do-while']
+        a: ['for', 'if', 'while', 'do-while'],
+        option: 2
     },
     {
         q: ' How can you convert the string of any base to integer in JavaScript?',
-        a: ['toString', 'parseInt', 'parseFloat', 'string']
+        a: ['toString', 'parseInt', 'parseFloat', 'string'],
+        option: 2
     },
     {
         q: 'What would be the result of 3+2+"7"?',
-        a: ['327', '12', '57', 'Error']
+        a: ['327', '12', '57', 'Error'],
+        option: 3
     },
     {
         q: 'What is the use of Void(0)?',
-        a: ['prevent the page from refreshing', 'break the flow of loop', 'call function void', 'None of the above']
+        a: ['prevent the page from refreshing', 'break the flow of loop', 'call function void', 'None of the above'],
+        option: 1
     },
     {
         q: 'What are escape characters?',
-        a: ['/', '$', '/n', '\\']
+        a: ['/', '$', '/n', '\\'],
+        option: 4
     },
     {
         q: 'What is the output of console.log( "A" - "B" + 2);',
-        a: ['AB2', 'A-B+2', 'NaN', 'error']
+        a: ['AB2', 'A-B+2', 'NaN', 'error'],
+        option: 3
     },
 ];
 
@@ -57,6 +67,8 @@ var countDownEl = document.getElementById('count-down');
 var questionCard = document.getElementsByClassName('question-card')[0];
 var resultCard = document.getElementsByClassName('result-card')[0];
 var circularCount = 0;
+var score = 0;
+var questionNumOnScreen = 0;
 
 var fiveMinutes = 60 * 1;
 startTimer(fiveMinutes, countDownEl);
@@ -76,6 +88,8 @@ function startTimer(duration, display) {
             clearInterval(countDown);
             //calculate the total score and display
             display.textContent = 'Time Over';
+            var finalScoreIs = document.getElementsByClassName('score-is')[0];
+            finalScoreIs.textContent = `Your Final Score is ${score}`
             questionCard.setAttribute('style','display:none');
             resultCard.setAttribute('style','display:block');
         }
@@ -85,7 +99,6 @@ function startTimer(duration, display) {
 assignQuestion(0);
 assignAnswers(0);
 setQuestionNum(1);
-//countDownEl.textContent = initialTime + ' sec remaining';
 
 function assignQuestion(questionNum){
     qEl.textContent = listOfqa[questionNum].q;
@@ -100,6 +113,21 @@ function assignAnswers(questionNum) {
 
 function setQuestionNum(num){
     questionNumEl.textContent = 'Question ' +  num + '/' + listOfqa.length;
+    questionNumOnScreen = num;
+}
+
+function checkAnswers(){
+    var optionSelected = document.querySelector('input[name="options"]:checked').value;
+    console.log(optionSelected);
+    var correctOption = listOfqa[questionNumOnScreen-1].option;
+    if(optionSelected == correctOption){
+        score = score + 10;
+    }
+    else{
+        score = score - 5;
+    }
+        
+    console.log('score: ' + score);
 }
 
 
