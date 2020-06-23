@@ -18,9 +18,35 @@ This application is written in pure Javascript, HTML & CSS which is a five minut
 - "Clear Score" clears the list and set local storage to empty array.
 - Used google fonts for styling fonts.
 
+```
+Start the quiz by clicking "Click here to start quiz"
+```
+![quiz](Assets/Entry.png)
 
-![quiz](Assets/final.png)
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+```
+You land to quiz page and timer starts ticking.
+```
+![quiz](Assets/Questions1.png)
+
+```
+If answer is correct, you can see the correct displayed at bottom.
+```
+![quiz](Assets/Questions2.png)
+
+```
+If answer is incorrect, you see incorrect message displayed and 10sec is decucted from total time.
+```
+![quiz](Assets/Questions4.png)
+
+```
+After answering all questions, you can click on submit or if the timer is over, you navigate to score page where score are displayed. You can enter initials and save. If you dont enter any value and submit, it gives error.
+```
+![quiz](Assets/scores.png)
+
+```
+List of all HighScores are displayed on this page
+```
+![quiz](Assets/HighScores.png)
 
 
 ## Prerequisites
