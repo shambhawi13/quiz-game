@@ -60,6 +60,7 @@ This application is written in pure Javascript, HTML & CSS which is a five minut
 - You can view the highest scores by clicking "View High Scores" button. As scores are stored in local storage, so scores will be refreshed if we clear local storage.
 - View high scores are available on all screens. It navigates to scores page that list the user initials and their scores.
 - "Clear Score" clears the list and set local storage to empty array.
+- Used google fonts for styling fonts.
 
 
 ![quiz](Assets/final.png)

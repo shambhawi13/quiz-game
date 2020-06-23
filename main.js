@@ -73,7 +73,7 @@ var submitAnswersBtn = document.getElementById('submit-answers');
 var circularCount = 0;
 var score = 0;
 var questionNumOnScreen = 0;
-var fiveMinutes = 60 * 1;
+var fiveMinutes = 60 * 5;
 var countDown;
 
 

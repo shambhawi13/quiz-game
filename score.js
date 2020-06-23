@@ -9,7 +9,7 @@ createList(getListItems);
 function createList(list){
     for(let i=0;i<list.length ; i++){
         var liEl = document.createElement('li');
-        liEl.setAttribute('class','list-group-item d-flex justify-content-between');
+        liEl.setAttribute('class','list-group-item d-flex justify-content-between scores-list-display');
         scoresListEl.appendChild(liEl);
 
         //create 2 span one for name one for child
