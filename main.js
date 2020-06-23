@@ -70,15 +70,17 @@ var resultCard = document.getElementsByClassName('result-card')[0];
 var viewScoreBtn = document.getElementsByClassName('view-scores-btn')[0];
 var startQuizSection = document.getElementsByClassName('start-quiz-section')[0];
 var submitAnswersBtn = document.getElementById('submit-answers');
+var display = document.getElementById('display');
 var circularCount = 0;
 var score = 0;
 var questionNumOnScreen = 0;
 var fiveMinutes = 60 * 5;
 var countDown;
+var timer;
 
 
 startQuizBtn.addEventListener('click', function () {
-    countDownEl.textContent = '5 minutes';
+    countDownEl.textContent = '2 minutes';
     startTimer(fiveMinutes, countDownEl);
     assignQuestion(0);
     assignAnswers(0);
@@ -90,7 +92,8 @@ startQuizBtn.addEventListener('click', function () {
 });
 
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+    timer = duration;
+    var minutes, seconds;
     countDown = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -134,9 +137,14 @@ function checkAnswers() {
     var correctOption = listOfqa[questionNumOnScreen - 1].option;
     if (optionSelected == correctOption) {
         score = score + 10;
+        display.textContent= 'Correct!!!';
     }
     else {
+        display.textContent= 'Incorrect!! 10s deducted';
         score = score - 5;
+        var decreaseTimer = timer - 10;
+        clearInterval(countDown);
+        startTimer(decreaseTimer, countDownEl);
     }
 
     console.log('score: ' + score);
@@ -144,7 +152,10 @@ function checkAnswers() {
 
 
 function onClick() {
-    window.location.href = './score.html';
+    var toNavigate = confirm('Data will be lost from this page. Do you still want to continue');
+    if(toNavigate){
+        window.location.href = './score.html';
+    }
 }
 
 function onSaveScore() {
@@ -177,14 +188,13 @@ function onSaveScore() {
 
 function onPrevClick(event) {
     //uncheck all radio buttons
+    display.textContent= '';
     let radio = document.querySelectorAll('input[name="options"]');
     for (let i = 0; i < radio.length; i++) {
         radio[i].checked = false;
     }
 
     if (circularCount === 0) {
-        //disable prev button
-        //prevEl.setAttribute('class','disabled');
     }
     else {
         circularCount--;
@@ -192,10 +202,12 @@ function onPrevClick(event) {
     assignQuestion(circularCount);
     assignAnswers(circularCount);
     setQuestionNum(circularCount + 1);
+    
 }
 
 function onNextClick(event) {
     //uncheck all radio buttons
+    display.textContent= '';
     let radio = document.querySelectorAll('input[name="options"]');
     for (let i = 0; i < radio.length; i++) {
         radio[i].checked = false;
@@ -216,6 +228,7 @@ function onNextClick(event) {
     assignQuestion(circularCount);
     assignAnswers(circularCount);
     setQuestionNum(circularCount + 1);
+    
 }
 
 function displayScores() {
