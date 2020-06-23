@@ -1,3 +1,15 @@
+body{
+    font-family: 'Sriracha', cursive;
+}
+
+.question-card{
+  display: none;
+}
+
+.view-scores-btn{
+  display: none;;
+}
+
 .result-card{
     display: none;
 }
