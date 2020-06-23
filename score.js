@@ -8,7 +8,6 @@ createList(getListItems);
 
 function createList(list){
     for(let i=0;i<list.length ; i++){
-        console.log(list[i].name);
         var liEl = document.createElement('li');
         liEl.setAttribute('class','list-group-item d-flex justify-content-between');
         scoresListEl.appendChild(liEl);
@@ -30,5 +29,9 @@ backEl.onclick = function(event){
 }
 
 clearEl.onclick = function(event){
-
+    localStorage.setItem('highscores_list',JSON.stringify([]));
+    let liElements = document.getElementsByClassName('list-group-item'); 
+    while (scoresListEl.firstChild) {
+         scoresListEl.removeChild(scoresListEl.firstChild);
+    }
 }

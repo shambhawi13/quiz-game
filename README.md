@@ -51,13 +51,15 @@ This application is written in pure Javascript, HTML & CSS which is a five minut
 - You get 5 minutes to answer all question. Used setInterval to set the timer
 - One correct answers gets you 10 points
 - One wrong answer lowers your score by 5 points.
-- If you dont know the anwer of a question, you can goto next question by clicking "Next" Button
+- If you dont know the anwer of a question, you can goto next question by clicking "Next" Button.
+- If you reach last question before time is over, you can submit directly from "Submit button".
 - If you want to review any answered question, you can click "Prev" button
 - After 5 min is over, you get to see total score. Enter the initials to save the score.
 - You cannot leave initials blank, there is a validation check and error msg is displayed when left blank.
 - You can submit your score using "Submit" button.
 - You can view the highest scores by clicking "View High Scores" button. As scores are stored in local storage, so scores will be refreshed if we clear local storage.
 - View high scores are available on all screens. It navigates to scores page that list the user initials and their scores.
+- "Clear Score" clears the list and set local storage to empty array.
 
 
 ![quiz](Assets/final.png)
